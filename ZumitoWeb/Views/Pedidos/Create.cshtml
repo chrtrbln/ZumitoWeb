@@ -1,0 +1,92 @@
+﻿@model ZumitoWeb.ViewModels.CrearPedidoViewModel
+@using System.Text.Json
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Pedido</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Fecha" class="control-label"></label>
+                    <input asp-for="Fecha" class="form-control" />
+                    <span asp-validation-for="Fecha" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="ClienteId" class="control-label"></label>
+                    <select asp-for="ClienteId" class="form-select" asp-items="ViewBag.Clientes">
+                        <option value="">Seleccione un cliente</option>
+                    </select>
+                </div>
+            </div>
+            <hr />
+            <div class="form-group">
+                <h4 class="display-6 fw-semibold">Productos</h4>
+                <div class="container" id="productosContainer">
+                    
+                </div>
+                <button type="button" class="btn btn-secondary my-2" onclick="agregarProducto()"> Agregar producto</button>
+            </div>
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="Guardar pedido" class="btn btn-primary my-2" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        let index = 0;
+        const productos = @Html.Raw(ViewBag.ProductosJson);
+
+        // Funcion para agregar productos dinamicamente
+        function agregarProducto() {
+
+            const container = document.getElementById('productosContainer');
+
+            const div = document.createElement('div');
+            div.classList.add('mb-3');
+            div.innerHTML = `
+                <div class="my-2 border rounded p-2">
+                    <label for="Productos_${index}__ProductoId" class="form-label">Producto</label>
+                    <select name="Productos[${index}].ProductoId" class="form-select" onchange="actualizarPrecio(this, ${index})" id="productoSelect_${index}">
+                        ${productos.map(p => `<option value="${p.id}" data-precio="${p.precio}">${p.nombre}</option>`).join('')}
+                    </select>
+                    <label for="Productos_${index}__Cantidad" class="form-label mt-2">Cantidad</label>
+                    <input name="Productos[${index}].Cantidad" type="number" value="1" class="form-control" min="1"/>
+                    <label for="Productos_${index}__Precio" class="form-label mt-2">Precio</label>
+                    <input name="Productos[${index}].Precio" id="precioInput_${index}" type="number" class="form-control"/>
+                </div>
+            `;
+            container.appendChild(div);
+            actualizarPrecio(document.getElementById(`productoSelect_${index}`), index);
+            index++;
+        }
+
+        // Actualiza el precio del input segun el producto seleccionado.
+        function actualizarPrecio(selectElement, index) {
+
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const precio = selectedOption.getAttribute("data-precio");
+            const precioInput = document.getElementById(`precioInput_${index}`);
+            if (precioInput) {
+                precioInput.value = precio;
+            }
+        }
+    </script>
+}
