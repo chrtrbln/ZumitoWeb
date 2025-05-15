@@ -10,11 +10,11 @@ using ZumitoWeb.Models;
 
 namespace ZumitoWeb.Controllers
 {
-    public class EmpleadoesController : Controller
+    public class EmpleadosController : Controller
     {
         private readonly ZumitoWebContext _context;
 
-        public EmpleadoesController(ZumitoWebContext context)
+        public EmpleadosController(ZumitoWebContext context)
         {
             _context = context;
         }

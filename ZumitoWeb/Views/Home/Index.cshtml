@@ -1,8 +1,119 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<section class="banner_main">
+    <div class="text-bg">
+        <h1> <span class="blu">Bienvenidos  <br></span>a Zumitos</h1>
+    </div>
+    <div id="banner1" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+           <li data-target="#banner1" data-slide-to="0" class="active"></li>
+           <li data-target="#banner1" data-slide-to="1"></li>
+           <li data-target="#banner1" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+           <div class="carousel-item active">
+              <div class="container">
+                 <div class="carousel-caption">
+                    <div class="text-bg">
+                       <figure><img src="images/banner_img.png" alt="#"/></figure>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           <div class="carousel-item">
+              <div class="container">
+                 <div class="carousel-caption">
+                    <div class="text-bg">
+                       <figure><img src="images/Z2.jpg" alt="#"/></figure>
+                    </div>
+                 </div>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <div class="container">
+                 <div class="carousel-caption">
+                    <div class="text-bg">
+                       <figure><img src="images/Z3.jpg" alt="#"/></figure>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
+        <a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+    </div>
+</section>
+
+<div class="about">
+    <div class="container">
+        <div class="row d_flex">
+            <div class="col-md-5">
+                <div class="about_img">
+                    <figure><img src="images/about_img.png" alt="#" /></figure>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="titlepage">
+                    <h2>¿Quiénes somos?</h2>
+                    <p>
+                        Zumitos es una empresa 100% salvadoreña dedicada a la producción y distribución de jugos naturales en todo el país. Nuestra misión es ofrecer productos saludables, frescos y deliciosos para toda la familia.
+                        Con más de 20 sucursales en El Salvador, nos esforzamos por llevar nutrición y sabor a cada rincón del país.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="glasses">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="titlepage">
+                    <h2>Los mas vendidos</h2>
+                    <p>
+                        ¡Conoce más sobre nuestros productos y los diversos tipos de juegos y sabores!!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="glasses_box">
+                    <figure><img src="~/images/glass1.png" alt="#" /></figure>
+                    <h3><span class="blu">$</span>5.00</h3>
+                    <p>Jugo de limom</p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="glasses_box">
+                    <figure><img src="~/images/glass2.png" alt="#" /></figure>
+                    <h3><span class="blu">$</span>5.00</h3>
+                    <p>Jugo de toronja</p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="glasses_box">
+                    <figure><img src="~/images/glass3.png" alt="#" /></figure>
+                    <h3><span class="blu">$</span>5.00</h3>
+                    <p>Jugo de Zanahoria</p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="glasses_box">
+                    <figure><img src="~/images/glass4.png" alt="#" /></figure>
+                    <h3><span class="blu">$</span>3.50</h3>
+                    <p>Jugo de apio</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

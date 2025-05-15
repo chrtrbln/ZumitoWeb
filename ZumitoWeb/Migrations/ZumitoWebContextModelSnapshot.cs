@@ -42,7 +42,8 @@ namespace ZumitoWeb.Migrations
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
 
                     b.Property<int>("Telefono")
                         .HasColumnType("int");
@@ -55,15 +56,18 @@ namespace ZumitoWeb.Migrations
             modelBuilder.Entity("ZumitoWeb.Models.Empleado", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Disponible")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Pass")
                         .IsRequired()
@@ -71,7 +75,8 @@ namespace ZumitoWeb.Migrations
 
                     b.Property<string>("Rol")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.HasKey("Id");
 
@@ -165,7 +170,7 @@ namespace ZumitoWeb.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmpleadoId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Estado")
                         .IsRequired()
