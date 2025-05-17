@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ZumitoWeb.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialRelease : Migration
+    public partial class SecondRelease : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,8 +17,9 @@ namespace ZumitoWeb.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
                     Telefono = table.Column<int>(type: "int", nullable: false),
+                    Pass = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Direccion = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Latitud = table.Column<double>(type: "float", nullable: false),
                     Longitud = table.Column<double>(type: "float", nullable: false)
@@ -32,11 +33,11 @@ namespace ZumitoWeb.Migrations
                 name: "Empleado",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Pass = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Rol = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Disponible = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Rol = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    Disponible = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,7 +67,7 @@ namespace ZumitoWeb.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Camino = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EmpleadoId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    EmpleadoId = table.Column<string>(type: "nvarchar(10)", nullable: true)
                 },
                 constraints: table =>
                 {

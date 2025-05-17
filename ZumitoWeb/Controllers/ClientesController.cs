@@ -54,7 +54,7 @@ namespace ZumitoWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Telefono,Direccion,Latitud,Longitud")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Telefono,Direccion,Latitud,Longitud,Pass")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace ZumitoWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Telefono,Direccion, Latitud, Longitud")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Telefono,Direccion, Latitud, Longitud, Pass")] Cliente cliente)
         {
             if (id != cliente.Id)
             {

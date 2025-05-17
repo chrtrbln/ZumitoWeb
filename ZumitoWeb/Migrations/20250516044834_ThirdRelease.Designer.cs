@@ -12,8 +12,8 @@ using ZumitoWeb.Data;
 namespace ZumitoWeb.Migrations
 {
     [DbContext(typeof(ZumitoWebContext))]
-    [Migration("20250514043015_RestrictionUpdate")]
-    partial class RestrictionUpdate
+    [Migration("20250516044834_ThirdRelease")]
+    partial class ThirdRelease
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,6 +47,10 @@ namespace ZumitoWeb.Migrations
                         .IsRequired()
                         .HasMaxLength(75)
                         .HasColumnType("nvarchar(75)");
+
+                    b.Property<string>("Pass")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Telefono")
                         .HasColumnType("int");

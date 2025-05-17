@@ -45,6 +45,10 @@ namespace ZumitoWeb.Migrations
                         .HasMaxLength(75)
                         .HasColumnType("nvarchar(75)");
 
+                    b.Property<string>("Pass")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Telefono")
                         .HasColumnType("int");
 

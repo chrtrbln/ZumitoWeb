@@ -4,7 +4,14 @@
 
 <section class="banner_main">
     <div class="text-bg">
-        <h1> <span class="blu">Bienvenidos  <br></span>a Zumitos</h1>
+        @if (ViewData["Usuarios"] != null)
+        {
+            <h1> <span class="blu" style="color: #ec7c22;">Bienvenido @ViewData["Usuarios"]<br></span>a Zumitos</h1>
+        }
+        else
+        {
+            <h1> <span class="blu" style="color: #ec7c22;">Bienvenidos  <br></span>a Zumitos</h1>
+        }
     </div>
     <div id="banner1" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">

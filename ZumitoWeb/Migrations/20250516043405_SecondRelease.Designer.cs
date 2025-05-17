@@ -12,8 +12,8 @@ using ZumitoWeb.Data;
 namespace ZumitoWeb.Migrations
 {
     [DbContext(typeof(ZumitoWebContext))]
-    [Migration("20250514021541_InitialRelease")]
-    partial class InitialRelease
+    [Migration("20250516043405_SecondRelease")]
+    partial class SecondRelease
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,6 +45,11 @@ namespace ZumitoWeb.Migrations
 
                     b.Property<string>("Nombre")
                         .IsRequired()
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
+
+                    b.Property<string>("Pass")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Telefono")
@@ -58,15 +63,18 @@ namespace ZumitoWeb.Migrations
             modelBuilder.Entity("ZumitoWeb.Models.Empleado", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Disponible")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Pass")
                         .IsRequired()
@@ -74,7 +82,8 @@ namespace ZumitoWeb.Migrations
 
                     b.Property<string>("Rol")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.HasKey("Id");
 
@@ -168,7 +177,7 @@ namespace ZumitoWeb.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmpleadoId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Estado")
                         .IsRequired()

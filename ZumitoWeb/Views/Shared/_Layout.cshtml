@@ -54,10 +54,22 @@
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cobertura">Zona de entrega </a>
                                     </li>
                                     <li class="nav-item d_none login_btn">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Register">Registrate </a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Register">Registrate </a>
                                     </li>
                                     <li class="nav-item d_none">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Inicia sesión </a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Inicia sesión </a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Admin
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li><a class="dropdown-item" asp-controller="Pedidos" asp-action="Index">Pedidos</a></li>
+                                            <li><a class="dropdown-item" asp-controller="Productos" asp-action="Index">Productos</a></li>
+                                            <li><a class="dropdown-item" asp-controller="Clientes" asp-action="Index">Clientes</a></li>
+                                            <li><a class="dropdown-item" asp-controller="Empleados" asp-action="Index">Empleados</a></li>
+                                            <li><a class="dropdown-item" asp-controller="Rutas" asp-action="Index">Rutas</a></li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </div>
@@ -67,11 +79,9 @@
             </div>
         </div>
     </header>
-    <div>
-        <main role="main">
+        <main role="main" style="padding-top: 150px;">
             @RenderBody()
         </main>
-    </div>
     <br />
     <footer>
         <div class="footer">
