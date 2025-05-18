@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ZumitoWeb.Data;
 using ZumitoWeb.Models;
-using ZumitoWeb.Data;
+using System.Linq.Expressions;
 
 namespace ZumitoWeb.Controllers
 {
     public class RutasController : Controller
     {
         private readonly ZumitoWebContext _context;
+        private Grafo grafo = new Grafo();
 
         public RutasController(ZumitoWebContext context)
         {
@@ -160,6 +161,65 @@ namespace ZumitoWeb.Controllers
         private bool RutaExists(int id)
         {
             return _context.Ruta.Any(e => e.Id == id);
+        }
+
+        public async void CrearGrafos(int[] ids)
+        {
+            grafo.Nodos.Clear();
+            grafo.Aristas.Clear();
+
+            //Nodo origen
+            grafo.AgregarNodo(new Nodo("0", 13.674378406007788, -89.23707583262862));
+            
+            var pedidos = await _context.Pedido.Include(p => p.Cliente).Where(p => ids.Contains(p.Id)).ToListAsync();
+            foreach (var pedido in pedidos)
+            {
+                grafo.AgregarNodo(new Nodo(pedido.Id.ToString(), pedido.Cliente.Latitud, pedido.Cliente.Longitud));
+            }
+
+            grafo.ConstruirGrafoCompleto();
+
+        }
+
+        public static Dictionary<Nodo, double> Calcular(Grafo grafo, Nodo origen)
+        {
+            var distancias = new Dictionary<Nodo, double>();
+            var visitados = new HashSet<Nodo>();
+            var cola = new PriorityQueue<Nodo, double>();
+
+            foreach (var nodo in grafo.Nodos)
+            {
+                distancias[nodo] = double.PositiveInfinity;
+            }
+
+            distancias[origen] = 0;
+            cola.Enqueue(origen, 0);
+
+            while (cola.Count > 0)
+            {
+                var actual = cola.Dequeue();
+
+                if (visitados.Contains(actual))
+                    continue;
+
+                visitados.Add(actual);
+
+                var aristasVecinas = grafo.Aristas.Where(a => a.Origen == actual);
+
+                foreach (var arista in aristasVecinas)
+                {
+                    var destino = arista.Destino;
+                    var nuevaDistancia = distancias[actual] + arista.Peso;
+
+                    if (nuevaDistancia < distancias[destino])
+                    {
+                        distancias[destino] = nuevaDistancia;
+                        cola.Enqueue(destino, nuevaDistancia);
+                    }
+                }
+            }
+
+            return distancias;
         }
     }
 }
