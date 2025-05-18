@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Clientes";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div style="margin: 0 5% 10% 5%;">
@@ -38,9 +39,9 @@
                             @Html.DisplayFor(modelItem => item.Direccion)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-secondary">Delete</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Editar</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Detalles</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-secondary">Eliminar</a>
                         </td>
                     </tr>
                 }

@@ -194,5 +194,10 @@ namespace ZumitoWeb.Controllers
         {
             return _context.Pedido.Any(e => e.Id == id);
         }
+
+        public IActionResult PedidosRuta()
+        {
+            return View();
+        }
     }
 }

@@ -3,49 +3,55 @@
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Create</h1>
+<div class="container h-100">
+    <div class="row align-items-center">
+        <div class="col card p-4 mx-auto">
+            <h1>Crear</h1>
 
-<h4>Pedido</h4>
-<hr />
-<div class="row">
-    <div class="col-md-12">
-        <form asp-action="Create" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="col-4">
-                <div class="form-group">
-                    <label asp-for="Fecha" class="control-label"></label>
-                    <input asp-for="Fecha" class="form-control" />
-                    <span asp-validation-for="Fecha" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="form-group">
-                    <label asp-for="ClienteId" class="control-label"></label>
-                    <select asp-for="ClienteId" class="form-select" asp-items="ViewBag.Clientes">
-                        <option value="">Seleccione un cliente</option>
-                    </select>
-                </div>
-            </div>
+            <h4>Pedido</h4>
             <hr />
-            <div class="form-group">
-                <h4 class="display-6 fw-semibold">Productos</h4>
-                <div class="container" id="productosContainer">
-                    
+            <div class="row">
+                <div class="col-md-12">
+                    <form asp-action="Create" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Fecha" class="control-label"></label>
+                                <input asp-for="Fecha" class="form-control" />
+                                <span asp-validation-for="Fecha" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="ClienteId" class="control-label"></label>
+                                <select asp-for="ClienteId" class="form-select" asp-items="ViewBag.Clientes">
+                                    <option value="">Seleccione un cliente</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <h4 class="display-6 fw-semibold">Productos</h4>
+                            <div class="container" id="productosContainer">
+                            </div>
+                            <button type="button" class="btn btn-secondary my-2" onclick="agregarProducto()"> Agregar producto</button>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <input type="submit" value="Guardar pedido" class="btn btn-primary my-2" />
+                        </div>
+                    </form>
                 </div>
-                <button type="button" class="btn btn-secondary my-2" onclick="agregarProducto()"> Agregar producto</button>
             </div>
-            <hr />
-            <div class="form-group">
-                <input type="submit" value="Guardar pedido" class="btn btn-primary my-2" />
+
+            <div>
+                <a asp-action="Index">Regresar</a>
             </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

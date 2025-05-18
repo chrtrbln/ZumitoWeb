@@ -32,6 +32,7 @@ namespace ZumitoWeb.Controllers
 
             if (empleado != null)
             {
+                HttpContext.Session.SetString("Logged", "true");
                 return RedirectToAction("Index", "Admin");
             }
             else

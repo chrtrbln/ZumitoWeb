@@ -12,7 +12,7 @@ namespace ZumitoWeb.Models
         public required int Telefono { get; set; }
         [DataType(DataType.Password)]
         [DisplayName("Contraseña")]
-        public required string Pass {  get; set; }
+        public string Pass { get; set; } = null!;
         public required string Direccion {  get; set; }
         public required double Latitud {  get; set; }
         public required double Longitud { get; set; }
